@@ -23,7 +23,7 @@ export class Checkoutpage {
 
   async continue() {
     await this.continueButton.click();
-    await expect(this.page).toHaveURL('/checkout-step-two/');
+    await expect(this.page).toHaveURL(/checkout-step-two/);
   }
 
   async finish() {
