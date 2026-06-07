@@ -1,3 +1,5 @@
+import { expect } from '@playwright/test';
+
 export class LoginPage {
 
   constructor(page) {
@@ -18,5 +20,11 @@ export class LoginPage {
     await this.passwordInput.fill(password);
 
     await this.loginButton.click();
+  }
+
+  async expectErrorMessage(errorMessage) {
+    const errorMessageContainer = this.page.locator('.error-message-container');
+
+    await expect(errorMessageContainer).toHaveText(errorMessage);
   }
 }
