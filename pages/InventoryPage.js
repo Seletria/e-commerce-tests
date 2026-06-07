@@ -23,6 +23,23 @@ export class InventoryPage {
     await this.productSorter.selectOption(option);
   }
 
+  async getProductNames() {
+    const names = await this.page.locator('.inventory_item_name').allTextContents();
+
+    return names;
+  }
+
+  async getProductPrice() {
+    const productPrices = await this.page.locator('.inventory_item_price').allTextContents();
+
+    const numericPrices = productPrices.map(
+      (price) => {
+        return parseFloat(price.replace(/[^0-9.-]+/g, ""))
+      })
+
+    return numericPrices;
+  }
+
   async getProductCount() {
     const inventoryItem = this.page.locator('.inventory_item');
 
