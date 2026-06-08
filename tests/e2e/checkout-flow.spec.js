@@ -2,6 +2,7 @@ import { test, expect } from "../../fixtures/tests"
 import { InventoryPage } from "../../pages/InventoryPage.js";
 import { CartPage } from "../../pages/CartPage.js";
 import { Checkoutpage } from "../../pages/CheckoutPage.js";
+import { products } from "../../utils/products.js";
 
 test.describe('Checkout flow', () => {
 
@@ -10,7 +11,7 @@ test.describe('Checkout flow', () => {
     const inventoryPage = new InventoryPage(authenticatedPage);
 
     await inventoryPage.expectPageLoaded();
-    await inventoryPage.ProductCard.addToCart('Sauce Labs Backpack');
+    await inventoryPage.ProductCard.addToCart(products.backpack);
     await inventoryPage.NavBar.clickCart();
 
     const cartPage = new CartPage(authenticatedPage);
