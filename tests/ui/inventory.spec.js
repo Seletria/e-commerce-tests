@@ -1,7 +1,7 @@
 import { test, expect } from '../../fixtures/tests';
 import { InventoryPage } from '../../pages/InventoryPage';
 
-test.describe('', () => {
+test.describe(() => {
 
   let inventoryPage
 
@@ -12,7 +12,7 @@ test.describe('', () => {
 
   })
 
-  test('Sort products A to Z', async () => {
+  test('Sort products A to Z @regression', async () => {
     await inventoryPage.sortBy('Name (A to Z)');
 
     const products = await inventoryPage.getProductNames();
@@ -21,7 +21,7 @@ test.describe('', () => {
     expect(products).toEqual(sortedProducts);
   });
 
-  test('Sort products Z to A', async () => {
+  test('Sort products Z to A @regression', async () => {
     await inventoryPage.sortBy('Name (Z to A)');
 
     const products = await inventoryPage.getProductNames();
@@ -31,7 +31,7 @@ test.describe('', () => {
 
   })
 
-  test('Sort products price(low to high)', async () => {
+  test('Sort products price(low to high) @regression', async () => {
     await inventoryPage.sortBy('Price (low to high)');
 
     const products = await inventoryPage.getProductPrice();
@@ -41,7 +41,7 @@ test.describe('', () => {
 
   })
 
-  test('Sort products price(high to low)', async () => {
+  test('Sort products price(high to low) @regression', async () => {
     await inventoryPage.sortBy('Price (high to low)');
 
     const products = await inventoryPage.getProductPrice();

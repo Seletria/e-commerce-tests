@@ -11,20 +11,20 @@ test.describe('Login Tests', () => {
     await loginPage.goto();
   })
 
-  test('Login with valid username', async ({ page }) => {
+  test('Login with valid username @smoke', async ({ page }) => {
     await loginPage.login('standard_user', 'secret_sauce');
 
     await expect(page).toHaveURL(/inventory/);
   })
 
-  test('Login with locked out user username', async ({ page }) => {
+  test('Login with locked out user username @regression', async ({ page }) => {
     await loginPage.login('locked_out_user', 'secret_sauce');
 
     await loginPage.expectErrorMessage('Epic sadface: Sorry, this user has been locked out.');
 
   })
 
-  test('Login with empty username', async ({ page }) => {
+  test('Login with empty username @regression', async ({ page }) => {
     await loginPage.login('', 'secret_sauce');
 
     await loginPage.expectErrorMessage('Epic sadface: Username is required');

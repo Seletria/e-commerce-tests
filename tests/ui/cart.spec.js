@@ -12,7 +12,7 @@ test.describe(() => {
 
   })
 
-  test('should add the selected product to the shopping cart', async ({ authenticatedPage }) => {
+  test('should add the selected product to the shopping cart @smoke', async ({ authenticatedPage }) => {
     await inventoryPage.ProductCard.addToCart('Sauce Labs Backpack');
     const badgeCount = await inventoryPage.NavBar.getCartCount();
 
@@ -20,7 +20,7 @@ test.describe(() => {
 
   })
 
-  test('should remove the product from the cart when delete button is clicked', async ({ authenticatedPage }) => {
+  test('should remove the product from the cart when delete button is clicked @smoke', async ({ authenticatedPage }) => {
     await inventoryPage.ProductCard.addToCart('Sauce Labs Backpack');
     await inventoryPage.ProductCard.removeFromCart('Sauce Labs Backpack');
 
@@ -28,7 +28,7 @@ test.describe(() => {
 
   })
 
-  test('should correctly update the quantity of items in the cart', async ({ authenticatedPage }) => {
+  test('should correctly update the quantity of items in the cart @regression', async ({ authenticatedPage }) => {
     await inventoryPage.ProductCard.addToCart(products.backpack);
     await inventoryPage.ProductCard.addToCart(products.bikeLight);
     await inventoryPage.ProductCard.addToCart(products.tshirt);
