@@ -3,6 +3,7 @@ import { InventoryPage } from "../../pages/InventoryPage.js";
 import { CartPage } from "../../pages/CartPage.js";
 import { Checkoutpage } from "../../pages/CheckoutPage.js";
 import { products } from "../../utils/products.js";
+import { generateCheckoutData } from "../../utils/faker.js";
 
 test.describe('Checkout flow', () => {
 
@@ -17,8 +18,11 @@ test.describe('Checkout flow', () => {
     const cartPage = new CartPage(authenticatedPage);
     await cartPage.checkout();
 
+    //generateCheckoutData fake data olusturabilmek icin utils'e eklendi
     const checkoutPage = new Checkoutpage(authenticatedPage);
-    await checkoutPage.fillForm('Test', 'denemesi', '1213123');
+    const checkoutData = generateCheckoutData();
+
+    await checkoutPage.fillForm(checkoutData.name, checkoutData.surname, checkoutData.zipcode);
     await checkoutPage.continue();
     await checkoutPage.finish();
     await checkoutPage.expectOrderComplete();
